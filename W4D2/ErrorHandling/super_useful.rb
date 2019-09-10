@@ -1,6 +1,10 @@
 # PHASE 2
 def convert_to_int(str)
-  Integer(str)
+  begin
+    Integer(str)  
+  rescue ArgumentError => e 
+    return nil
+  end
 end
 
 # PHASE 3
@@ -16,18 +20,38 @@ end
 
 def feed_me_a_fruit
   puts "Hello, I am a friendly monster. :)"
-
-  puts "Feed me a fruit! (Enter the name of a fruit:)"
-  maybe_fruit = gets.chomp
-  reaction(maybe_fruit) 
+  
+  begin
+    puts "Feed me a fruit! (Enter the name of a fruit:)"
+    maybe_fruit = gets.chomp 
+    reaction(maybe_fruit)   
+  rescue StandardError => e 
+    puts "Give coffee to retry"
+    maybe_fruit = gets.chomp
+    if maybe_fruit == 'coffee'
+      retry
+    end
+  end
+  
 end  
 
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
-    @name = name
-    @yrs_known = yrs_known
-    @fav_pastime = fav_pastime
+    
+    if name.empty? || fav_pastime.empty?
+      raise "Needs name and pastime"
+    else
+      @name = name
+      @fav_pastime = fav_pastime
+    end
+
+    if yrs_known < 5
+      raise "Best friend has to be more than 5 years"
+    else
+      @yrs_known = yrs_known 
+    end
+    
   end
 
   def talk_about_friendship
