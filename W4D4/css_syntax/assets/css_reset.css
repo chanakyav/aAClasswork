@@ -32,7 +32,7 @@ h2 {
 }
 
 ol {
-  list-style: circle;
+  list-style: circle inside;
 }
 
 header > img {
@@ -56,9 +56,9 @@ body {
   font-family: arial, sans-serif;
   line-height: 1.5;
 }
-ol, ul {
+/* ol, ul {
   list-style: none;
-}
+} */
 blockquote, q {
   quotes: none;
 }
