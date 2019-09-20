@@ -1,4 +1,4 @@
-def shorter_path(path)
+\def shorter_path(path)
   stack = []
   path.split('/').each do |dir|
     if dir != ".." && dir != "."
