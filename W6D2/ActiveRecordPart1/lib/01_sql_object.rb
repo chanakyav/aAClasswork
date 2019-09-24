@@ -21,12 +21,12 @@ class SQLObject
       inst_var = '@'+name.to_s
 
       define_method(name) do                # Getters
-        instance_variable_get(inst_var)
+        attributes[name]
       end
 
       sttr_name = (name.to_s + '=').to_sym
       define_method(sttr_name) do |value|   # Setters
-        instance_variable_set(inst_var, value)
+        attributes[name] = value
       end
     end
   end
@@ -41,11 +41,14 @@ class SQLObject
   end
 
   def self.all
-    # ...
+    DBConnection.execute(<<-SQL)
+      SELECT *
+      FROM #{self.table_name}
+    SQL
   end
 
   def self.parse_all(results)
-    # ...
+    
   end
 
   def self.find(id)
@@ -53,7 +56,13 @@ class SQLObject
   end
 
   def initialize(params = {})
-    # ...
+    params.each do |attr_name, value|
+      unless self.class.columns.include?(attr_name.to_sym)
+        raise "unknown attribute '#{attr_name}'"
+      end
+      sttr_name = (attr_name.to_s + '=').to_sym
+      send(sttr_name, value)
+    end
   end
 
   def attributes
