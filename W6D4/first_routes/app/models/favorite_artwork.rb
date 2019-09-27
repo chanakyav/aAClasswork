@@ -1,0 +1,2 @@
+class FavoriteArtwork < ApplicationRecord
+end
