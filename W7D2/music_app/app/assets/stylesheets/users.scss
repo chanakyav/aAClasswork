@@ -1,0 +1,58 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-image: url("music.jpg");
+  background-size: cover;
+}
+
+h1 {
+  display: flex;
+  font-family: 'Arial Black';
+  justify-content: center
+}
+
+h2 {
+  display: flex;
+  justify-content: center
+}
+
+.credentials {
+  display: flex;
+  justify-content: center
+}
+
+.login_sign_up_buttons {
+  display: flex;
+  justify-content: center
+}
+
+.credentials label{
+  display: inline-block;
+  width:100px;
+  text-align:left;
+}
+
+.credentials input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#submit_button {
+  // display: flex;
+  // margin: 0 auto;
+    width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
