@@ -1,0 +1,22 @@
+<h1>Show post</h1>
+
+<%= @post.title %>  <br>
+<%= @post.url %> <br>
+<%= @post.content %> <br>
+<br>
+
+<ul>
+  <%= @post.comments.each do |comment| %>
+  <li> <%= comment.content %> </li>
+  <% end %>
+</ul>
+
+
+
+
+<form action="<%= post_url(@post)%>" method="post">
+  <%= auth_token_input %>
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Post">
+</form>
+<a href="<%= subs_url %>">All Subforums</a>

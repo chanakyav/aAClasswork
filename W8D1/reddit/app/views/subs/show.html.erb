@@ -1,0 +1,34 @@
+<h1>Subforum Show Page</h1>
+
+<%= @sub.title %> <br>
+<%= @sub.description %> <br>
+<%= @sub.moderator.username %>
+<br> <br>
+
+<h2>Posts for this subforum:</h2>
+
+<ul>
+  <% @sub.posts.each do |post| %>
+    <li> <%= post.title %> </li>
+    <li> <%= post.url %> </li>
+    <li> <%= post.content %> </li>
+
+    <form><button type="submit" formaction="<%= edit_post_url(post) %>">Edit Post</button></form>
+    <form action="<%= post_url(post)%>" method="post">
+      <%= auth_token_input %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Post">
+    </form>
+    <br>
+  <% end %>
+</ul>
+
+<a href="<%=subs_url%>">All Subs</a> <br>
+<a href="<%=edit_sub_url(@sub)%>">Edit Sub</a> <br>
+<a href="<%=new_post_url%>">Create New Post</a> <br><br>
+
+<form action="<%=sub_url(@sub)%>" method="post" >
+  <%=auth_token_input%>
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Subforum">
+</form>
