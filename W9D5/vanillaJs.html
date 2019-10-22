@@ -1,0 +1,19 @@
+<div id="click"> Click Me </div>
+<div id="new" name="display">
+    div
+    <p class="edit">paragraph</p>
+</div>
+
+<script>
+
+    let ear = document.getElementById("click");
+    console.log(ear);
+    
+    ear.addEventListener("click", () => {        
+        // console.log(document.getElementsByName("display")[0].innerHTML);
+        console.log(document.getElementsByName("display")[0].getElementsByTagName("p")[0]);
+        console.log(document.getElementsByClassName("edit"));
+        console.log(document.querySelector("p").innerText = "new paragraph");
+    });
+
+</script>
