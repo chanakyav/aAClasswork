@@ -1,38 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Clock from "./clock";
-import Tabs from "./tabs";
+import React from 'react';
+import Clock from './clock';
+import Tabs from './tabs';
+import Weather from './weather';
 
-const tabs = [
-    {
-        title: "One",
-        content: "This is one"
-    },
-    {
-        title: "Two",
-        content: "This is two"
-    },
-    {
-        title: "One",
-        content: "This is 3"
-    },
-];
+class Widget extends React.Component {
 
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.getElementById("root");
-    const app = 
-    <div>
-        <Clock/>
-        <Tabs data={tabs}/>
-    </div>;
-    ReactDOM.render( app, root );
-});
+  render() {
+    return (
+      <div>
+        <Clock />
+        <Tabs tabs={this.props.movies}/>
+        <Weather />
+      </div>
+    );
+  }
 
+}
 
-/*
-
-Pass array of objects to Tabs component:
-
-
-
-*/
+export default Widget;
